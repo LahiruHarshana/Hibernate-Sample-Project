@@ -7,5 +7,8 @@ public class SessionFactoryConfig {
     private SessionFactoryConfig(){
 
     }
+    public static SessionFactoryConfig getInstance(){
+
+    }
 
 }
