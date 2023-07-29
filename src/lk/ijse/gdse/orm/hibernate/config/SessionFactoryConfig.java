@@ -1,5 +1,7 @@
 package lk.ijse.gdse.orm.hibernate.config;
 
+import org.hibernate.SessionFactory;
+
 public class SessionFactoryConfig {
 
     private static SessionFactoryConfig factoryConfig;
@@ -15,6 +17,9 @@ public class SessionFactoryConfig {
 //        }
 
         return (factoryConfig==null)? factoryConfig = new SessionFactoryConfig() : factoryConfig;
+
+    }
+    public SessionFactory getSession(){
 
     }
 
