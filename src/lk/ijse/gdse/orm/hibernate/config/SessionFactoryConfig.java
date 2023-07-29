@@ -1,6 +1,7 @@
 package lk.ijse.gdse.orm.hibernate.config;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistry;
 
 public class SessionFactoryConfig {
 
@@ -19,7 +20,8 @@ public class SessionFactoryConfig {
         return (factoryConfig==null)? factoryConfig = new SessionFactoryConfig() : factoryConfig;
 
     }
-    public SessionFactory getSession(){
+    public SessionFactory getSession() {
+        StandardServiceRegistry serviceRegistry = new StandardServiceRegistry;
 
     }
 
