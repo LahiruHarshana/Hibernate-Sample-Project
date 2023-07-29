@@ -1,5 +1,6 @@
 package lk.ijse.gdse.orm.hibernate.config;
 
+
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,6 +28,19 @@ public class SessionFactoryConfig {
 
     }
     public Session getSession() {
+//        StandardServiceRegistry builder = new StandardServiceRegistryBuilder().configure().build();
+//
+//        Metadata meta = new MetadataSources(builder).
+//                addAnnotatedClass(Customer.class).
+//                getMetadataBuilder().
+//                applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE).
+//                build();
+//
+//
+//        SessionFactory sessionFactory = meta.buildSessionFactory();
+//        return sessionFactory.openSession();
+
+
         StandardServiceRegistry builder = new StandardServiceRegistryBuilder().configure().build();
 
         Metadata meta = new MetadataSources(builder).addAnnotatedClass(Customer.class).
