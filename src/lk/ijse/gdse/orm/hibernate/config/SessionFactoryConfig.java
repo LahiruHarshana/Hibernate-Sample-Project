@@ -1,7 +1,10 @@
 package lk.ijse.gdse.orm.hibernate.config;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
@@ -22,11 +25,12 @@ public class SessionFactoryConfig {
         return (factoryConfig==null)? factoryConfig = new SessionFactoryConfig() : factoryConfig;
 
     }
-    public SessionFactory getSession() {
+    public Session getSession() {
         StandardServiceRegistry builder = new StandardServiceRegistryBuilder().configure().build();
 
-        MetadataSources metadataSources = new MetadataSources(builder);
-        return null;
+        Metadata metadata = new MetadataSources(builder).getMetadataBuilder().applyImplicitNamingStrategy(ImplicitNamingStrategyComponentPathImpl.INSTANCE).build();
+        SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+        return sessionFactory.openSession();
 
     }
 
