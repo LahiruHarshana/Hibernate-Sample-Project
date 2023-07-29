@@ -8,6 +8,13 @@ public class SessionFactoryConfig {
 
     }
     public static SessionFactoryConfig getInstance(){
+//        if(factoryConfig==null){
+//            return new SessionFactoryConfig();
+//        }else {
+//            return factoryConfig;
+//        }
+
+        return (factoryConfig==null)? factoryConfig = new SessionFactoryConfig() : factoryConfig;
 
     }
 
