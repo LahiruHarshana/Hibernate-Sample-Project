@@ -23,16 +23,27 @@ public class AppInitializer {
         session.close();*/
 
         //2.update
-        Session session1 = SessionFactoryConfig.getInstance().getSession();
-        Transaction transaction1 = session1.beginTransaction();
+//        Session session1 = SessionFactoryConfig.getInstance().getSession();
+//        Transaction transaction1 = session1.beginTransaction();
+//
+//        Customer customer1 = session1.get(Customer.class,1);
+//        customer1.setAddress("Matara");
+//        customer1.setName("Nimal");
+//        //session1.save(customer1);
+//        session1.update(customer1);
+//        transaction1.commit();
+//        session1.close();
 
-        Customer customer1 = session1.get(Customer.class,1);
-        customer1.setAddress("Matara");
-        customer1.setName("Nimal");
-        //session1.save(customer1);
-        session1.update(customer1);
-        transaction1.commit();
-        session1.close();
+
+        //4.delete
+        Session deleteSession = SessionFactoryConfig.getInstance().getSession();
+        Transaction deleteTransaction = deleteSession.beginTransaction();
+
+        Customer deleteCustomer = deleteSession.get(Customer.class,1);
+        deleteSession.delete(deleteCustomer);
+        deleteTransaction.commit();
+        deleteSession.close();
+
 
     }
 }
