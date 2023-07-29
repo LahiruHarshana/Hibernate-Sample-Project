@@ -22,5 +22,8 @@ public class AppInitializer {
         session.close();
 
         //2.update
+        Session session1 = SessionFactoryConfig.getInstance().getSession();
+        Transaction transaction1 = session1.beginTransaction();
+
     }
 }
