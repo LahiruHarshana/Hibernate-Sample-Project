@@ -1,5 +1,6 @@
 package lk.ijse.gdse.orm.hibernate;
 
+import lk.ijse.gdse.orm.hibernate.config.Config;
 import lk.ijse.gdse.orm.hibernate.config.SessionFactoryConfig;
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
 import org.hibernate.Session;
@@ -36,14 +37,27 @@ public class AppInitializer {
 
 
         //4.delete
-        Session deleteSession = SessionFactoryConfig.getInstance().getSession();
+        /*Session deleteSession = SessionFactoryConfig.getInstance().getSession();
         Transaction deleteTransaction = deleteSession.beginTransaction();
 
         Customer deleteCustomer = deleteSession.get(Customer.class,1);
         deleteSession.delete(deleteCustomer);
         deleteTransaction.commit();
-        deleteSession.close();
+        deleteSession.close();*/
 
+        Session session=Config.getInstance().getSession();
+
+        Transaction trans = session.beginTransaction();
+
+        Customer customer = new Customer();
+        customer.setId(3);
+        customer.setName("Lahiru");
+        customer.setAddress("Weligama");
+        customer.setSalary(20000);
+
+        session.save(customer);
+        trans.commit();
+        session.close();
 
     }
 }
