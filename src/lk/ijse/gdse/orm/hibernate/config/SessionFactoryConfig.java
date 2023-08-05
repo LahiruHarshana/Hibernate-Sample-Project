@@ -39,13 +39,12 @@ public class SessionFactoryConfig {
      */
     public Session getSession() {
         // Creates a Service Registry
-        StandardServiceRegistry serviceRegistry
-                = new StandardServiceRegistryBuilder()
-                .configure()
-                .build();
+        StandardServiceRegistry serviceRegistry;
 
         // Creates a Metadata Object
-        Metadata metadata = new MetadataSources(serviceRegistry)
+        Metadata metadata = new MetadataSources(new StandardServiceRegistryBuilder()
+                .configure()
+                .build())
                 .addAnnotatedClass(Customer.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(
