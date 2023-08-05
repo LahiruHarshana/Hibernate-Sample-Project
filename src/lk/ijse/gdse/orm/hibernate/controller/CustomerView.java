@@ -5,10 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import lk.ijse.gdse.orm.hibernate.config.Config;
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
+import lk.ijse.gdse.orm.hibernate.repository.CustomerRepository;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class CustomerView {
+
+    CustomerRepository customerRepository = new CustomerRepository();
     @FXML
     private TextField adTxt;
 
@@ -23,13 +26,18 @@ public class CustomerView {
 
     @FXML
     void svBtnOnAction(ActionEvent event) {
+//        Customer customer = customerRepository.getCustomer()
+
         Session session= Config.getInstance().getSession();
 
         Transaction trans = session.beginTransaction();
 
         Customer customer = new Customer(Integer.parseInt(idTxt.getText()),nmTxt.getText(),adTxt.getText(),Double.parseDouble(salTxt.getText()));
+        customerRepository.saveCustomer(customer);
 
-        session.save(customer);
+
+
+//        session.save(customer);
         trans.commit();
         session.close();
     }

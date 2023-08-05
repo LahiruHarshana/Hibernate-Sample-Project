@@ -8,10 +8,13 @@ import javafx.stage.Stage;
 import lk.ijse.gdse.orm.hibernate.config.Config;
 import lk.ijse.gdse.orm.hibernate.config.SessionFactoryConfig;
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
+import lk.ijse.gdse.orm.hibernate.repository.CustomerRepository;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class AppInitializer extends Application {
+
+
 
 //    public static void main(String[] args) {
 //
