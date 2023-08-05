@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="219.0" prefWidth="456.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.orm.hibernate.controller.CustomerView">
+   <children>
+      <TextField fx:id="idTxt" layoutX="47.0" layoutY="58.0" />
+      <TextField fx:id="nmTxt" layoutX="251.0" layoutY="58.0" />
+      <TextField fx:id="salTxt" layoutX="47.0" layoutY="103.0" />
+      <TextField fx:id="adTxt" layoutX="251.0" layoutY="103.0" />
+      <Button layoutX="356.0" layoutY="156.0" mnemonicParsing="false" onAction="#svBtnOnAction" text="Save" />
+      <Text layoutX="48.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
+      <Text layoutX="49.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salarry" />
+      <Text layoutX="252.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+      <Text layoutX="251.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adddress" />
+   </children>
+</AnchorPane>
