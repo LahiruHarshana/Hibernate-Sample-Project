@@ -18,10 +18,17 @@ public class CustomerRepository {
 
     public int saveCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
-        int customerId = (int) session.save(customer);
-        transaction.commit();
-        session.close();
-        return customerId;
+        try {
+            int customerId = (int) session.save(customer);
+            transaction.commit();
+            session.close();
+            return customerId;
+        }catch (Exception e){
+            transaction.rollback();
+            session.close();
+            e.printStackTrace();
+            return -1;
+        }
     }
     public boolean updateCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
