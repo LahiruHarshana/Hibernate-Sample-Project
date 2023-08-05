@@ -8,6 +8,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
 /**
  * This is the session factory configuration class
@@ -50,6 +51,11 @@ public class SessionFactoryConfig {
                 .applyImplicitNamingStrategy(
                         ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
+
+        new Configuration()
+                .configure()
+                .addAnnotatedClass(Customer.class)
+                .buildSessionFactory();
 
         // Creates the Session Factory
         SessionFactory sessionFactory = metadata
