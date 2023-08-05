@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Customer {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY) == auto increment for generate new id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private int id;
 
