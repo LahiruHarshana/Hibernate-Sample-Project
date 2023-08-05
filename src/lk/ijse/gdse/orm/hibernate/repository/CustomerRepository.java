@@ -13,7 +13,12 @@ public class CustomerRepository {
 
     }
     public Customer getCustomer(int id){
-        return session.get(Customer.class,id);
+        try {
+            return session.get(Customer.class,id);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     public int saveCustomer(Customer customer){
@@ -32,15 +37,31 @@ public class CustomerRepository {
     }
     public boolean updateCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
-        session.update(customer);
-        return true;
+        try {
+            session.update(customer);
+            return true;
+        }catch (Exception e){
+            transaction.rollback();
+            session.close();
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
     public boolean deleteCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
-        session.delete(customer);
-        transaction.commit();
-        session.close();
-        return true;
+        try{
+            session.delete(customer);
+            transaction.commit();
+            session.close();
+            return true;
+
+        }catch (Exception e){
+            transaction.rollback();
+            session.close();
+            e.printStackTrace();
+            return false;
+        }
     }
 }
