@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 
 public class CustomerView {
 
-    CustomerRepository customerRepository = new CustomerRepository();
+
     @FXML
     private TextField adTxt;
 
@@ -31,6 +31,8 @@ public class CustomerView {
     void svBtnOnAction(ActionEvent event) {
 //        Customer customer = customerRepository.getCustomer()
 
+        CustomerRepository customerRepository = new CustomerRepository();
+
         Session session= Config.getInstance().getSession();
 
         Transaction trans = session.beginTransaction();
@@ -46,6 +48,8 @@ public class CustomerView {
     }
     @FXML
     void scBtnOnAction(ActionEvent event) {
+
+        CustomerRepository customerRepository = new CustomerRepository();
         Customer customer = customerRepository.getCustomer(Integer.parseInt(idTxt.getText()));
 
         Session session= Config.getInstance().getSession();
