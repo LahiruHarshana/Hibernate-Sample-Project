@@ -2,6 +2,7 @@ package lk.ijse.gdse.orm.hibernate.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import lk.ijse.gdse.orm.hibernate.config.Config;
 import lk.ijse.gdse.orm.hibernate.entity.Customer;
@@ -15,6 +16,8 @@ public class CustomerView {
     @FXML
     private TextField adTxt;
 
+    @FXML
+    private Button scBtn;
     @FXML
     private TextField idTxt;
 
@@ -40,5 +43,20 @@ public class CustomerView {
 //        session.save(customer);
         trans.commit();
         session.close();
+    }
+    @FXML
+    void scBtnOnAction(ActionEvent event) {
+        Customer customer = customerRepository.getCustomer(Integer.parseInt(idTxt.getText()));
+
+        Session session= Config.getInstance().getSession();
+
+        Transaction trans = session.beginTransaction();
+        nmTxt.setText(customer.getName());
+        adTxt.setText(customer.getAddress());
+        salTxt.setText(String.valueOf(customer.getSalary()));
+        customerRepository.saveCustomer(customer);
+        trans.commit();
+        session.close();
+
     }
 }
