@@ -18,8 +18,9 @@ public class CustomerRepository {
 
     public int saveCustomer(Customer customer){
         Transaction transaction = session.beginTransaction();
-        session.save(customer);
+        int customerId = (int) session.save(customer);
         transaction.commit();
         session.close();
+        return customerId;
     }
 }
