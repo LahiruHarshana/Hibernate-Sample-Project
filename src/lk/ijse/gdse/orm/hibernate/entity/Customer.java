@@ -1,14 +1,12 @@
 package lk.ijse.gdse.orm.hibernate.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="Customer")
 public class Customer {
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY) == auto increment for generate new id
     @Column(name = "customer_id")
     private int id;
 
