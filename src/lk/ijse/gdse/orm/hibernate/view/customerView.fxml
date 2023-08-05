@@ -18,5 +18,6 @@
       <Text layoutX="251.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adddress" />
       <Button fx:id="scBtn" layoutX="276.0" layoutY="156.0" mnemonicParsing="false" onAction="#scBtnOnAction" text="Search" />
       <Button fx:id="upBtn" layoutX="198.0" layoutY="157.0" mnemonicParsing="false" onAction="#upBtnOnAction" text="Update" />
+      <Button fx:id="dltBtn" layoutX="117.0" layoutY="158.0" mnemonicParsing="false" onAction="#dltBtnOnAction" text="Delete" />
    </children>
 </AnchorPane>

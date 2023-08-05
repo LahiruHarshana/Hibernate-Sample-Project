@@ -17,6 +17,8 @@ public class CustomerView {
     @FXML
     private Button upBtn;
     @FXML
+    private Button dltBtn;
+    @FXML
     private TextField adTxt;
 
 
@@ -84,6 +86,21 @@ public class CustomerView {
         customer.setId(Integer.parseInt(idTxt.getText()));
 
         customerRepository.updateCustomer(customer);
+        trans.commit();
+        session.close();
+
+    }
+    @FXML
+    void dltBtnOnAction(ActionEvent event) {
+
+        CustomerRepository customerRepository = new CustomerRepository();
+        Session session= Config.getInstance().getSession();
+        Transaction trans = session.beginTransaction();
+
+        int id = Integer.parseInt(idTxt.getText());
+        Customer customer = session.get(Customer.class,id);
+
+        customerRepository.deleteCustomer(customer);
         trans.commit();
         session.close();
 
