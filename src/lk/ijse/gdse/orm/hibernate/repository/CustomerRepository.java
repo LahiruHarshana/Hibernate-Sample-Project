@@ -23,4 +23,9 @@ public class CustomerRepository {
         session.close();
         return customerId;
     }
+    public boolean updateCustomer(Customer customer){
+        Transaction transaction = session.beginTransaction();
+        session.update(customer);
+        return true;
+    }
 }
